@@ -1,0 +1,82 @@
+<div class="card w-50 mx-auto mt-4">
+  <h4 class="card-header">Sign Up</h4>
+  <div class="card-body">
+    <form action="" #r="ngForm" (ngSubmit)="handleSubmit(r)">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input
+          type="text"
+          ngModel
+          class="form-control"
+          name="fname"
+          minlength="6"
+          required
+        />
+        <div
+          *ngIf="r.controls['fname']?.['touched'] && r.controls['fname']?.['errors']"
+        >
+          <div *ngIf="r.controls['fname']?.['errors']?.['required']">
+            Username is required
+          </div>
+          <div *ngIf="r.controls['fname']?.['errors']?.['minlength']">
+            please enter at least six characters
+          </div>
+        </div>
+        <div class="form-group mt-2">
+          <label>Email</label>
+          <input
+            type="email"
+            ngModel
+            class="form-control"
+            name="email"
+            required
+            email
+          />
+        </div>
+        <div
+          *ngIf="r.controls['email']?.['touched'] && r.controls['email']?.['errors']"
+        >
+          <div *ngIf="r.controls['email']?.['errors']?.['required']">
+            Email is required
+          </div>
+          <div *ngIf="r.controls['email']?.['errors']?.['email']">
+            Invalid email
+          </div>
+        </div>
+      </div>
+      <div class="form-group mt-2">
+        <label>Password</label>
+        <input
+          type="password"
+          ngModel
+          class="form-control"
+          name="pswd"
+          required
+          minlength="8"
+        />
+        <div
+          *ngIf="r.controls['pswd']?.['touched'] && r.controls['pswd']?.['errors']?.['required']"
+        >
+          Password is required
+        </div>
+        <div *ngIf="r.controls['pswd']?.['errors']?.['minlength']">
+          Minimum length is 8 characters
+        </div>
+      </div>
+      <div class="form-group mt-2">
+        <label>Confirm Password</label>
+        <input type="password" ngModel class="form-control" name="cpwd" required />
+        <div
+          *ngIf="r.controls['cpwd']?.['touched'] && r.controls['pswd']?.['value'] != r.controls['cpwd']?.['value']"
+        >
+          passwords must match
+        </div>
+      </div>
+      <div class="mt-2">
+        <button [disabled]="r.invalid" type="submit" class="btn btn-primary">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
