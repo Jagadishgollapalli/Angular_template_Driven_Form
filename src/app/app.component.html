@@ -52,7 +52,7 @@
           class="form-control"
           name="pswd"
           required
-          minlength="8"
+          minlength="4"
         />
         <div
           *ngIf="r.controls['pswd']?.['touched'] && r.controls['pswd']?.['errors']?.['required']"
@@ -60,12 +60,18 @@
           Password is required
         </div>
         <div *ngIf="r.controls['pswd']?.['errors']?.['minlength']">
-          Minimum length is 8 characters
+          Minimum length is 4 characters
         </div>
       </div>
       <div class="form-group mt-2">
         <label>Confirm Password</label>
-        <input type="password" ngModel class="form-control" name="cpwd" required />
+        <input
+          type="password"
+          ngModel
+          class="form-control"
+          name="cpwd"
+          required
+        />
         <div
           *ngIf="r.controls['cpwd']?.['touched'] && r.controls['pswd']?.['value'] != r.controls['cpwd']?.['value']"
         >
@@ -80,3 +86,5 @@
     </form>
   </div>
 </div>
+
+{{userdetails | json }}

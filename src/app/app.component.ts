@@ -4,14 +4,26 @@ import ngForm from '@angular/forms';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'template-forms';
 
+  userdetails: any = {
+    fname: '',
+    email: '',
+    pwd: '',
+    cpwd: '',
+  };
+
   handleSubmit(details: any) {
-    alert("Details submitted successfully!");
     console.log(details.value);
+    this.userdetails = {
+      fname: details.value.fname,
+      email: details.value.email,
+      pwd: details.value.pwd,
+      cpwd: details.value.cpwd,
+    };
     details.reset();
   }
 }
